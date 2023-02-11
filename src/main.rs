@@ -1,23 +1,25 @@
 // In The Name Of Allah
 
-#[allow(unused_imports)]
-use colored::Colorize;
+use std;
 
-use std::io;
-
+mod open_file;
 fn main() {
-    println!("Enter a text");
+    print!("Enter a file name: ");
 
+    let mut name = String::new();
     let mut text = String::new();
-    io::stdin()
-        .read_line(&mut text)
-        .expect("Erro!");
     
-    color(text);
+    std::io::stdin()
+        .read_line(&mut name)
+        .expect("Error!");
 
-}
+    print!("Enter a text: ");
+    std::io::stdin()
+        .read_line(&mut text)
+        .expect("Error!");
+    
+    
+    
+    open_file::open(name, text);
 
-
-fn color(x:String) -> (){
-    println!("{}",x.red());
 }
